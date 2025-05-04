@@ -1,42 +1,115 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.navbar-background {
+    /* background: rgba(255, 255, 255, 0.25); */
+    background: rgba(70, 31, 85, 0.25);
+    /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+    backdrop-filter: blur(7.5px);
+    -webkit-backdrop-filter: blur(7.5px);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.navbar-items {
+    position: relative;
+    padding-bottom: 4px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-items::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: #9333ea;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+@keyframes width-animation {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
 }
 
-.card {
-  padding: 2em;
+.navbar-items:hover:after {
+    animation: width-animation 300ms ease-in-out forwards;
 }
 
-.read-the-docs {
-  color: #888;
+@keyframes auto-show-animation {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.show-animation {
+    animation: auto-show-animation both;
+    animation-timeline: view();
+}
+
+@keyframes translate-animation-both {
+    0% {
+        opacity: 0.8;
+        transform: skew(40deg, 10deg);
+    }
+    50% {
+        opacity: 1;
+        transform: skew(0deg, 0deg);
+    }
+}
+
+.journey-animation {
+    animation: translate-animation-both ease-in;
+    animation-timeline: view();
+}
+
+@keyframes animate-skills-card {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.skills-card-container {
+    animation: animate-skills-card 0.5s both;
+    animation-timeline: view(60% auto);
+}
+
+/* Journey card container */
+@keyframes animate-journey-card {
+    from {
+        translate: 0 10;
+    }
+
+    to {
+        translate: 0 0;
+    }
+}
+
+.journey-card {
+    animation: animate-journey-card 1s both;
+    animation-timeline: view();
+}
+
+@keyframes animate-trivia-card {
+    0% {
+        translate: 0 10;
+    }
+
+    90% {
+        translate: 0 0;
+    }
+}
+
+.trivia-card-container {
+    animation: animate-trivia-card both;
+    animation-timeline: view();
 }
